@@ -32,3 +32,21 @@ variable "name" {
 variable "ami_id" {
     default = "ami-09c813fb71547fc4f"
 }
+
+variable "from_port" {
+    type = bool
+    default = "0"
+}
+
+variable "to_port" {
+    type = bool
+    default = "0"
+}
+
+variable "protocol" {
+    default = "-1"
+}
+
+variable "cidr_blocks" {
+    default = ["0.0.0.0/0"]
+}
