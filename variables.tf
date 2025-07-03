@@ -13,3 +13,13 @@ variable "instance_type" {
     type = string
     default = "t3.micro"
 }
+
+variable "user_data" {
+    type = string
+}
+
+variable "tags" {
+    default = {
+        Name = "workstation"
+    }
+}
