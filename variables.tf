@@ -8,3 +8,8 @@ variable "public_subnet_id" {
     type = string
     default = "subnet-04b690ffdaa49022a"
 }
+
+variable "instance_type" {
+    type = string
+    default = "t3.micro"
+}
