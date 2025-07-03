@@ -3,3 +3,8 @@ variable "sg_id" {
     default = ["sg-0f81b4954c6b01728"]
 
 }
+
+variable "public_subnet_id" {
+    type = string
+    default = "subnet-04b690ffdaa49022a"
+}
