@@ -23,3 +23,8 @@ variable "tags" {
         Name = "workstation"
     }
 }
+
+variable "name" {
+    type = string
+    default = "workstation"
+}
