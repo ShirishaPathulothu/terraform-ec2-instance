@@ -14,7 +14,7 @@ variable "ami_id" {
 }
 
 variable "sg_name" {
-    default = "allow-all"
+    default = "allow-alll"
 }
 
 variable "tags" {
