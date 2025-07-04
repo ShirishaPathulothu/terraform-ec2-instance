@@ -23,3 +23,7 @@ variable "tags" {
         Name = "workstation"
     }
 }
+
+variable "user_data" {
+    type = string
+}
