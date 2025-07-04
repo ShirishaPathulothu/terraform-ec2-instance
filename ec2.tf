@@ -3,6 +3,7 @@ resource "aws_instance" "workstation" {
     instance_type = "t3.micro"
     vpc_security_group_ids = [aws_security_group.sg_id.id]
     user_data = var.user_data
+    user_data_replace_on_change = true
 
     tags = {
     Name = "allow_tls"
