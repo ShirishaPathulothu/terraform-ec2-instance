@@ -45,8 +45,6 @@ kubectl version
 VALIDATE $? "kubectl installation"
 
 # eksctl
-ARCH=amd64
-PLATFORM=$(uname -s)_$ARCH
 curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
 tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
 mv /tmp/eksctl /usr/local/bin
@@ -55,7 +53,6 @@ VALIDATE $? "eksctl installation"
 
 # kubens
 git clone https://github.com/ahmetb/kubectx /opt/kubectx
-ln -s /opt/kubectx/kubectx /usr/local/bin/kubectx
 ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 VALIDATE $? "kubens installation"
 
