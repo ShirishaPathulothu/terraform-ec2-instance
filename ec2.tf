@@ -2,6 +2,7 @@ resource "aws_instance" "workstation" {
     ami = var.ami_id
     instance_type = "t3.micro"
     vpc_security_group_ids = [aws_security_group.sg_id.id]
+    user_data = file("workstation.sh")
     
     tags = {
     Name = "allow_tls"
