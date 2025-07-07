@@ -8,6 +8,8 @@ R="\e[31m"
 G="\e[32m"
 N="\e[0m"
 
+set -e
+
 ARCH=amd64
 PLATFORM=$(uname -s)_$ARCH
 
@@ -44,10 +46,21 @@ mv kubectl /usr/local/bin/kubectl
 kubectl version
 VALIDATE $? "kubectl installation"
 
+# Helm
+curl -fsSL -o get_helm.sh https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3
+chmod 700 get_helm.sh
+./get_helm.sh
+
+# kubens
+git clone https://github.com/ahmetb/kubectx /opt/kubectx
+ln -s /opt/kubectx/kubens /usr/local/bin/kubens
+VALIDATE $? "kubens installation"
+
 # eksctl
-curl -sLO "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
-tar -xzf eksctl_$PLATFORM.tar.gz -C /tmp && rm eksctl_$PLATFORM.tar.gz
-mv /tmp/eksctl /usr/local/bin
+curl -sL --fail -o eksctl.tar.gz "https://github.com/eksctl-io/eksctl/releases/latest/download/eksctl_$PLATFORM.tar.gz"
+tar -xzf eksctl.tar.gz -C /tmp
+mv /tmp/eksctl /usr/local/bin/eksctl
+chmod +x /usr/local/bin/eksctl
 eksctl version
 VALIDATE $? "eksctl installation"
 
@@ -55,4 +68,6 @@ VALIDATE $? "eksctl installation"
 git clone https://github.com/ahmetb/kubectx /opt/kubectx
 ln -s /opt/kubectx/kubens /usr/local/bin/kubens
 VALIDATE $? "kubens installation"
+
+echo -e "$G.. All tools installed successfully $N"
 
